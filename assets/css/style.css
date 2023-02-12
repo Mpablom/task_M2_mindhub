@@ -1,0 +1,83 @@
+*,html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Serif JP', serif;
+}
+html{
+    min-height: 100vh;
+}
+body{
+    min-height: 100%;
+    /* background: radial-gradient(white,rgb(214, 214, 214)); */
+    background: linear-gradient(to  top,white,whitesmoke,lightgray);
+}
+
+/* =========================== HEADER =================================== */
+
+/* .navbar{
+    background: linear-gradient(to bottom,#314352,#516a80,#6886a2,#516a80,#314352);
+} */
+.nav-link{
+    font-family: 'Noto Serif JP', serif;
+    color: whitesmoke;
+}
+.active{
+    font-weight: bold;
+}
+.sub-nav{
+    box-shadow: 1px 1px 10px 1px black !important;
+}
+.link-section{
+    text-decoration: none;
+    color:#fffefe;
+    height: 90px;
+    width: 100%;
+}
+.carousel-inner{
+    background:	rgb(254, 121, 121);
+}
+.card{
+    box-shadow: 0px 0px 40px -20px black;
+}
+.card-img-top{
+    height: 150px;
+    width: 85%;
+    box-shadow: -5px -5px 7px -4px black;
+}
+.card-title{
+    font-weight:900;
+    font-size: 20px;
+    text-align: center;
+}
+.card-text{
+    text-align: center;
+}
+.seeMore{
+    font-size: 14px;
+    box-shadow: -5px -5px 7px -4px black;
+    transition: all .4s ease-in-out;
+}
+.seeMore:hover{
+    transform: scale(1.05);
+}
+.footer{
+    color:rgb(208, 200, 200);
+}
+.name{
+    font-size: 22px;
+    font-weight: 700;
+}
+@media (max-width:1046px) {
+    .check-container{
+        display: block !important;
+    }
+    .form-check{
+        align-items: baseline;
+        flex-wrap: wrap;
+    }
+    .search{
+        width: 100% !important;
+        margin-top: 10px;
+    }
+}
