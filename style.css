@@ -260,6 +260,10 @@ th,td,tr{
     .form{
         margin: 0;
     }
+    .form-contact{
+        width: 80% !important;
+        margin-left: 10% !important;
+    }
     .check-container{
         display:flex !important;
         flex-wrap: wrap !important;
@@ -283,8 +287,16 @@ th,td,tr{
         width: 100% !important;
         margin-left: 0 !important;
     }
+    .form-container{
+        width: 94%;
+        margin-left: 3%;
+        margin-right: 3%;
+    }
 }
 @media(max-width: 320px){
+    *{
+        font-size: 12px !important;
+    }
     .form-check-label{
         padding: 0 !important;
     }
