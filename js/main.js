@@ -1,12 +1,11 @@
-let card = document.getElementById("card")
-const actualYear = new Date().getFullYear();
+let card = document.getElementById("card");
+export const actualYear = new Date().getFullYear();
 document.getElementById("year").innerHTML = actualYear;
 
-function traer(){
-    fetch('data.json').then(response=>response.json()).then(datos=>{
-        // console.log(datos);
-        cards(datos);
-    })
+function productos(){
+    fetch('./data.json')
+    .then(response=>response.json())
+    .then(datos=>{cards(datos)})
 };
 function cards(datos){
     card.innerHTML='';
@@ -25,5 +24,5 @@ function cards(datos){
                                 </div>
                             </div>`;
     }
-}
-traer();
+};
+productos();
