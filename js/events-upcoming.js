@@ -1,20 +1,40 @@
-import {cardService } from "./main.js";
+import {cardsService } from "./main.js";
+import { readProducts } from "./main.js";
+import data from '../data.json' assert { type: 'json' };
 
-
-function productosUpcoming(){
-        cardService.readProducts()
-        .then(datos=>{cardsEventsUpcoming(datos)});
+function productsUpcoming(){
+    readProducts;
+    cardsEventsUpcoming(data);
 };
 
-function cardsEventsUpcoming(datos){
+function cardsEventsUpcoming(data){
     card.innerHTML='';
-    for(let valores of datos.events){
-        let currentDate = new Date(datos.currentDate);
+    for(let valores of data.events){
+        let currentDate = new Date(data.currentDate);
         let eventDate = new Date(valores.date);
         if (eventDate < currentDate) {
-            cardService.cardsDates(valores);
+            cardsService.cardsDates(valores);
         }
     }
 };
 
-productosUpcoming();
+productsUpcoming();
+
+
+// function productosUpcoming(){
+//         cardService.readProducts()
+//         .then(datos=>{cardsEventsUpcoming(datos)});
+// };
+
+// function cardsEventsUpcoming(datos){
+//     card.innerHTML='';
+//     for(let valores of datos.events){
+//         let currentDate = new Date(datos.currentDate);
+//         let eventDate = new Date(valores.date);
+//         if (eventDate < currentDate) {
+//             cardService.cardsDates(valores);
+//         }
+//     }
+// };
+
+// productosUpcoming();

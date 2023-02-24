@@ -1,42 +1,85 @@
-let card = document.getElementById("card");
+import data from '../data.json' assert { type: 'json' };
 
-const readProducts = () => fetch('./data.json').then(response => response.json());
-const readProduct = (id) => fetch('./data.json').then(response => response.json());
+export const readProducts = data;
 
 function actualYear(){
     const actualYear = new Date().getFullYear();
     document.getElementById("year").innerHTML = actualYear;
-}
-function cardsEvents(){
-    actualYear();
-    readProducts()
-    .then(datos=>{cards(datos)});
 };
+
 function cardsDates(valores){
-    card.innerHTML += `<div class="col-sm-5 col-md-4 col-lg-4 col-xl-3">
-    <div class="card">
-        <img src="${valores.image}" class="card-img-top m-4" alt="${valores.name}">
-        <div class="card-body">
-            <h5 class="card-title">${valores.name}</h5>
-            <p class="card-text">${valores.description}</p>
-        </div>
-        <div class="card-footer d-inline-flex border-top-0">
-            <p> Price:<span class="pe-2">${valores.price}.-</span></p>
-            <a href="./details.html?id=${valores.id}" class="btn btn-dark w-75 seeMore">See More</a>
-        </div>  
-    </div>
-</div>`;
-}
-function cards(datos){
-    card.innerHTML='';
-    for(let valores of datos.events){
+        let card = document.getElementById("card");
+        card.innerHTML += `<div class="col-sm-5 col-md-4 col-lg-4 col-xl-3">
+                                <div class="card">
+                                    <img src="${valores.image}" class="card-img-top m-4" alt="${valores.name}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${valores.name}</h5>
+                                        <p class="card-text">${valores.description}</p>
+                                    </div>
+                                    <div class="card-footer d-inline-flex border-top-0">
+                                        <p> Price:<span class="pe-2">${valores.price}.-</span></p>
+                                        <a href="./details.html?id=${valores.id}" class="btn btn-dark w-75 seeMore">See More</a>
+                                    </div>  
+                                </div>
+                            </div>`;
+    };
+
+function cards(data){
+    for(let valores of data.events){
         cardsDates(valores);
     }
+    };
+
+function cardsEvents(){
+    actualYear();
+    readProducts;
+    cards(data);
 };
+
 cardsEvents();
-export const cardService = {
-    readProducts,
-    readProduct,
+
+export const cardsService = {
     actualYear,
     cardsDates,
 };
+
+/* ========================== Con fetch ============================== */
+
+// const readProducts = () => fetch('./data.json').then(response => response.json());
+
+// function actualYear(){
+//     const actualYear = new Date().getFullYear();
+//     document.getElementById("year").innerHTML = actualYear;
+// }
+// function cardsEvents(){
+//     actualYear();
+//     readProducts()
+//     .then(datos=>{cards(datos)});
+// };
+// function cardsDates(valores){
+//     let card = document.getElementById("card");
+//     card.innerHTML += `<div class="col-sm-5 col-md-4 col-lg-4 col-xl-3">
+//     <div class="card">
+//         <img src="${valores.image}" class="card-img-top m-4" alt="${valores.name}">
+//         <div class="card-body">
+//             <h5 class="card-title">${valores.name}</h5>
+//             <p class="card-text">${valores.description}</p>
+//         </div>
+//         <div class="card-footer d-inline-flex border-top-0">
+//             <p> Price:<span class="pe-2">${valores.price}.-</span></p>
+//             <a href="./details.html?id=${valores.id}" class="btn btn-dark w-75 seeMore">See More</a>
+//         </div>  
+//     </div>
+// </div>`;
+// }
+// function cards(datos){
+//     for(let valores of datos.events){
+//         cardsDates(valores);
+//     }
+// };
+// cardsEvents();
+// export const cardService = {
+//     readProducts,
+//     actualYear,
+//     cardsDates,
+// };
