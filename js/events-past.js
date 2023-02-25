@@ -1,6 +1,6 @@
-import {cardsService } from "./main.js";
-import { readProducts } from "./main.js";
-import data from '../data.json' assert { type: 'json' };
+import {cardsService,readProducts } from "./main.js";
+// import data from '../data.json' assert { type: 'json' };
+import { data } from "./data.js";
 
 function productsPast(){
     readProducts;
@@ -19,22 +19,3 @@ function cardsEventsPast(data){
 };
 
 productsPast();
-
-
-// function productosPast(){
-//     cardService.readProducts()
-//     .then(datos=>{cardsEventsPast(datos)});
-// };
-
-// function cardsEventsPast(datos){
-//     card.innerHTML='';
-//     for(let valores of datos.events){
-//         let currentDate = new Date(datos.currentDate);
-//         let eventDate = new Date(valores.date);
-//         if (eventDate > currentDate) {
-//             cardService.cardsDates(valores);
-//         }
-//     }
-// };
-
-// productosPast();
