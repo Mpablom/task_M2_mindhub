@@ -1,15 +1,19 @@
 // import data from '../data.json' assert { type: 'json' };
 
 // export const readProducts = data;
+
 import { data } from "./data.js";
 
 export const readProducts = data.events;
 export const readProduct =(id)=> readProducts[id-1];
+
+//funcion actualYear de footer
 function actualYear(){
     const actualYear = new Date().getFullYear();
     document.getElementById("year").innerHTML = actualYear;
 };
 
+//crea la tarjeta
 function cardsDates(valores){
         let card = document.getElementById("card");
         card.innerHTML += `<div class="col-sm-5 col-md-4 col-lg-4 col-xl-3">
@@ -25,22 +29,25 @@ function cardsDates(valores){
                                     </div>  
                                 </div>
                             </div>`;
-    };
-
+};
+//crea una tarjeta por cada items del .json
 function cards(data){
     for(let valores of data.events){
         cardsDates(valores);
     }
-    };
+};
 
+//guardo todo lo necesario en una funcion
 function cardsEvents(){
     actualYear();
     readProducts;
     cards(data);
 };
 
+//arranco la funcion
 cardsEvents();
 
+//exporto las funciones para usarlas en los otros archivos .js
 export const cardsService = {
     actualYear,
     cardsDates,

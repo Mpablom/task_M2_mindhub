@@ -2,11 +2,13 @@ import {cardsService,readProducts } from "./main.js";
 // import data from '../data.json' assert { type: 'json' };
 import { data } from "./data.js";
 
+//guardo todo lo necesario en una funcion
 function productsPast(){
     readProducts;
     cardsEventsPast(data);
 };
 
+//creo las tarjetas si se cumple la condición
 function cardsEventsPast(data){
     card.innerHTML='';
     for(let valores of data.events){
@@ -18,4 +20,5 @@ function cardsEventsPast(data){
     }
 };
 
+//inicio la funcion
 productsPast();
