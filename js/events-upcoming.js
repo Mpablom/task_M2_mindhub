@@ -6,11 +6,12 @@ import { data } from "./data.js";
 function productsUpcoming(){
     readProducts;
     cardsEventsUpcoming(data);
+    cardsService.addCheckBoxes
 };
 
 //crea las tarjetas si cumplen con la condición
 function cardsEventsUpcoming(data){
-    card.innerHTML='';
+    cards.innerHTML='';
     for(let valores of data.events){
         let currentDate = new Date(data.currentDate);
         let eventDate = new Date(valores.date);

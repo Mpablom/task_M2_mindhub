@@ -1,11 +1,40 @@
-// import data from '../data.json' assert { type: 'json' };
-
-// export const readProducts = data;
-
 import { data } from "./data.js";
 
 export const readProducts = data.events;
-export const readProduct =(id)=> readProducts[id-1];
+
+//creo un checkbox por cada category de los events
+
+let checks = document.getElementById("checks");
+const categories = [...new Set(readProducts.map(events => events.category))];
+
+function addCheckBoxes(categories) {
+    for (let item in categories) {
+        checks.innerHTML += ` <div class="form-check d-inline-flex mt-3 ms-3">
+                                    <input class="form-check-input m-0 " type="checkbox" value="${categories[item]}" id="Check_A" name="category">
+                                    <label class="form-check-label ps-2 pe-4 sm-ps-0 sm-pe-0" for="Check_A">
+                                        ${categories[item]}
+                                    </label>
+                                </div>`;
+    }
+
+    // Detectar cambios en los checkboxes y llamar a la función filterItems()
+    const checkboxes = document.querySelectorAll('input[type=checkbox]');
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+        filterItems(readProducts);
+        });
+    });
+}
+
+// Filtrar los eventos según las categorías seleccionadas 
+function filterItems(readProducts) {
+const checkboxes = document.querySelectorAll('input[type=checkbox]');
+const selectedCategories = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+const filteredData = readProducts.filter(events => selectedCategories.includes(events.category));
+
+console.log('Categorías seleccionadas:', selectedCategories);
+console.log('Elementos filtrados:', filteredData);
+}
 
 //funcion actualYear de footer
 function actualYear(){
@@ -15,8 +44,8 @@ function actualYear(){
 
 //crea la tarjeta
 function cardsDates(valores){
-        let card = document.getElementById("card");
-        card.innerHTML += `<div class="col-sm-5 col-md-4 col-lg-4 col-xl-3">
+        let cards = document.getElementById("cards");
+        cards.innerHTML += `<div class="col-sm-5 col-md-4 col-lg-4 col-xl-3">
                                 <div class="card">
                                     <img src="${valores.image}" class="card-img-top m-4" alt="${valores.name}">
                                     <div class="card-body">
@@ -30,25 +59,30 @@ function cardsDates(valores){
                                 </div>
                             </div>`;
 };
+
 //crea una tarjeta por cada items del .json
-function cards(data){
+function cardsCreate(data){
     for(let valores of data.events){
         cardsDates(valores);
-    }
+    };
 };
 
 //guardo todo lo necesario en una funcion
-function cardsEvents(){
+
+function main(){
     actualYear();
     readProducts;
-    cards(data);
+    cardsCreate(data);
+    addCheckBoxes(categories);
+    filterItems(readProducts);
 };
 
 //arranco la funcion
-cardsEvents();
+main()
 
 //exporto las funciones para usarlas en los otros archivos .js
 export const cardsService = {
     actualYear,
     cardsDates,
+    addCheckBoxes,
 };

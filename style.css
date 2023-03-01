@@ -220,6 +220,10 @@ th,td,tr{
     width: 100%;
     min-height: 100%;
     box-shadow: -5px -5px 7px -2px black;
+    transition: all .4s ease-in-out;
+}
+.img-fluid:hover{
+    transform: scale(1.05);
 }
 .card-details{
     width: 80%;
