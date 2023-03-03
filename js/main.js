@@ -2,6 +2,15 @@ import { data } from "./data.js";
 
 export const readProducts = data.events;
 
+const searchInput = document.getElementById('search');
+
+searchInput.addEventListener('input', function() {
+    const filteredData = filterItems(readProducts);
+    cardsCreate(filteredData);
+});
+
+
+
 //creo un checkbox por cada category de los events
 
 let checks = document.getElementById("checks");
@@ -15,26 +24,33 @@ function addCheckBoxes(categories) {
                                         ${categories[item]}
                                     </label>
                                 </div>`;
-    }
+    };
 
-    // Detectar cambios en los checkboxes y llamar a la función filterItems()
+    // Detectar cambios en los checkboxes y llamar a las funciones filterItems() y cardsCreate()
     const checkboxes = document.querySelectorAll('input[type=checkbox]');
     checkboxes.forEach(function(checkbox) {
         checkbox.addEventListener('change', function() {
-        filterItems(readProducts);
+            const filteredData = filterItems(readProducts);
+            cardsCreate(filteredData);
         });
     });
 }
 
+
 // Filtrar los eventos según las categorías seleccionadas 
 function filterItems(readProducts) {
-const checkboxes = document.querySelectorAll('input[type=checkbox]');
-const selectedCategories = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
-const filteredData = readProducts.filter(events => selectedCategories.includes(events.category));
+    const checkboxes = document.querySelectorAll('input[type=checkbox]');
+    const selectedCategories = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+    const keyword = searchInput.value.toLowerCase();
+    const filteredData = readProducts.filter(events => {
+        const containsCategory = selectedCategories.length === 0 || selectedCategories.includes(events.category);
+        const containsKeyword = keyword === '' || events.name.toLowerCase().includes(keyword) || events.description.toLowerCase().includes(keyword);
+        return containsCategory && containsKeyword;
+    });
+    return filteredData;
+};
 
-console.log('Categorías seleccionadas:', selectedCategories);
-console.log('Elementos filtrados:', filteredData);
-}
+
 
 //funcion actualYear de footer
 function actualYear(){
@@ -61,28 +77,37 @@ function cardsDates(valores){
 };
 
 //crea una tarjeta por cada items del .json
-function cardsCreate(data){
-    for(let valores of data.events){
-        cardsDates(valores);
-    };
-};
+
+function cardsCreate(filteredData){
+    let cards = document.getElementById("cards");
+    cards.innerHTML = "";
+    let noResults = document.getElementById("no-results")
+    noResults.innerHTML = "";
+    if (filteredData.length === 0) {
+        noResults.innerHTML="No se Encontró el evento!!";
+    } else {
+        for(let valores of filteredData){
+            cardsDates(valores);
+        }
+    }
+}
+
 
 //guardo todo lo necesario en una funcion
 
 function main(){
     actualYear();
-    readProducts;
-    cardsCreate(data);
     addCheckBoxes(categories);
-    filterItems(readProducts);
+    cardsCreate(readProducts);
 };
 
 //arranco la funcion
-main()
+main();
 
 //exporto las funciones para usarlas en los otros archivos .js
 export const cardsService = {
     actualYear,
     cardsDates,
     addCheckBoxes,
+    filterItems,
 };

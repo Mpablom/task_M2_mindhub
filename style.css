@@ -10,7 +10,8 @@ html{
 body{
     min-height: 100vh;
     position: relative;
-    background: linear-gradient(to top,  rgb(27, 49, 43), rgb(42, 78, 68),rgb(75, 121, 108),rgb(136, 189, 174));
+    /* background: linear-gradient(to top,  rgb(27, 49, 43), rgb(42, 78, 68),rgb(75, 121, 108),rgb(136, 189, 174)); */
+    background: linear-gradient(to bottom, rgba(255, 0, 255, 0.897), rgb(61, 1, 61));
 }
 
 /* ================================ HEADER =================================== */
@@ -102,6 +103,18 @@ span{
     font-size: 12px;
     font-family: 'Nunito Sans', sans-serif;
     color: white;
+}
+
+#no-results {
+    max-width: 60%;
+    margin-left: 20%;
+    display: flex;
+    font-weight: 900;
+    align-content: center;
+    justify-content: center;
+    padding: 50px;
+    font-size: 24px;
+    color: red;
 }
 .search{
     width: 100% !important;
