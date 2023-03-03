@@ -10,8 +10,7 @@ html{
 body{
     min-height: 100vh;
     position: relative;
-    /* background: linear-gradient(to top,  rgb(27, 49, 43), rgb(42, 78, 68),rgb(75, 121, 108),rgb(136, 189, 174)); */
-    background: linear-gradient(to bottom, rgba(255, 0, 255, 0.897), rgb(61, 1, 61));
+    background: linear-gradient(to bottom, rgb(185, 0, 80),rgb(129, 0, 56));
 }
 
 /* ================================ HEADER =================================== */
@@ -247,7 +246,7 @@ th,td,tr{
 /* ================================ FOOTER =================================== */
 
 .footer{
-    color:rgb(208, 200, 200);
+    color:rgb(255, 255, 255);
     position:absolute;
     width: 100%;
     font-family: 'Nunito Sans', sans-serif;
@@ -366,13 +365,13 @@ th,td,tr{
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 10px 5px transparent;
     border-radius: 0px;
-    background: linear-gradient(to top, white,#333);
+    background: linear-gradient(to top, #333, rgb(134, 134, 134),#333);
 }
 
         /* _______________________ HANDLE __________________________ */
 
-        ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to top,  rgb(27, 49, 43), rgb(42, 78, 68),rgb(130, 210, 189),rgb(180, 245, 227));
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, rgb(255, 0, 111),rgb(0, 0, 0));
     border-radius: 8px;
     border: 4px solid transparent;
     background-clip: content-box;
@@ -380,7 +379,7 @@ th,td,tr{
         /* _______________________ HANDLE ON HOVER __________________ */
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(to top,rgb(180, 245, 227),rgb(130, 210, 189),rgb(42, 78, 68), rgb(27, 49, 43));
+    background: linear-gradient(to top, rgb(255, 0, 111),rgb(0, 0, 0));
     border-radius: 8px;
     border: 4px solid transparent;
     background-clip: content-box;
