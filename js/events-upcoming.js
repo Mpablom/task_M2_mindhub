@@ -1,53 +1,50 @@
-import { cardsService, readProducts as data } from "./main.js";
-import { data as datajs } from "./data.js";
+
+//Escucha el search, y busca las tarjetas de acuerdo al filtro;
 
 const searchInDos = document.getElementById('search');
 searchInDos.addEventListener('input', function() {
-    const filteredData = filterUpcoming(data);
-    cardsEventsUpcoming(filteredData, new Date(datajs.currentDate));
+    const filteredDataDos = filterUpcoming(readProducts);
+    cardsEventsUpcoming(filteredDataDos, new Date(data.currentDate));
 });
 
-let checks = document.getElementById("checks");
-const categories = [...new Set(data.map(events => events.category))];
+// Detectar cambios en los checkboxes y llama las funciones filterUpcoming() y cardsEventsUpcoming();
 
-function addCheckUpcoming(categories) {
-    checks.innerHTML='';
-    for (let item in categories) {
-        checks.innerHTML += ` <div class="form-check d-inline-flex mt-3 ms-3">
-                                    <input class="form-check-input m-0 " type="checkbox" value="${categories[item]}" id="Check_A" name="category">
-                                    <label class="form-check-label ps-2 pe-4 sm-ps-0 sm-pe-0" for="Check_A">
-                                        ${categories[item]}
-                                    </label>
-                                </div>`;
-    };
-
-    const checkboxes = document.querySelectorAll('input[type=checkbox]');
+const checkboxes = document.querySelectorAll('input[type=checkbox]');
+function changeCheckBoxUpcoming() {
     checkboxes.forEach(function(checkbox) {
-        const isUpcomingEvent = new Date(datajs.currentDate);
+        const isEvent = new Date(data.currentDate);
         checkbox.addEventListener('change', function() {
-            const filteredData = filterUpcoming(data);
-            cardsEventsUpcoming(filteredData,isUpcomingEvent);
+            const filteredData = filterUpcoming(readProducts);
+            cardsEventsUpcoming(filteredData,isEvent);
         });
     });
-}
-const cards = document.getElementById('cards');
-
-function cardsEventsUpcoming(data, currentDate) {
-    cards.innerHTML = '';
-    for (let event of data) {
-        let eventDate = new Date(event.date);
-        if (eventDate >= currentDate) {
-            cardsService.cardsDates(event);
-        }
-    }
 };
 
-function filterUpcoming(data) {
-    const checkboxes = document.querySelectorAll('input[type=checkbox]');
+//Une las dos funciones para crear checkbox y detectar los cambios;
+
+function checkBoxesUpcoming (){
+    changeCheckBoxUpcoming();
+};
+
+//Crea las tarjetas solo si son upcoming;
+
+function cardsEventsUpcoming(readProducts, currentDate) {
+    cards.innerHTML = '';
+    for (let event of readProducts) {
+        let eventDate = new Date(event.date);
+        if (eventDate >= currentDate) {
+            cardsDates(event);
+        };
+    };
+};
+
+// Filtrar los eventos según las categorías seleccionadas, solo sobre los upcoming events;
+
+function filterUpcoming(readProducts) {
     const selectedCategories = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
     const keyword = searchInDos.value.toLowerCase();
-    const isEvent = new Date(datajs.currentDate);
-    const filteredData = data.filter(event => {
+    const isEvent = new Date(data.currentDate);
+    const filteredData = readProducts.filter(event => {
         const containsCategory = selectedCategories.length === 0 || selectedCategories.includes(event.category);
         const containsKeyword = keyword === '' || event.name.toLowerCase().includes(keyword) || event.description.toLowerCase().includes(keyword);
         const isUpcoming = new Date(event.date) >= isEvent;
@@ -56,10 +53,14 @@ function filterUpcoming(data) {
     return filteredData;
 };
 
+//Guardo todo lo necesario en una función principal;
+
 function upcomingEvents() {
-    addCheckUpcoming(categories);
-    const upcomingData = filterUpcoming(data);
-    cardsEventsUpcoming(upcomingData, new Date(datajs.currentDate));   
+    checkBoxesUpcoming ();
+    const upcomingData = filterUpcoming(readProducts);
+    cardsEventsUpcoming(upcomingData, new Date(data.currentDate));   
 };
+
+//Ejecuto la función;
 
 upcomingEvents();
