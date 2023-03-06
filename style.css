@@ -249,7 +249,6 @@ th,td,tr{
     color:rgb(255, 255, 255);
     position:absolute;
     width: 100%;
-    font-family: 'Nunito Sans', sans-serif;
 }
 .name{
     font-size: 22px;
@@ -258,6 +257,8 @@ th,td,tr{
 }
 .text-name{
     text-transform: uppercase;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 200 !important;
 }
 .fab{
     transition: all .4s ease-in;

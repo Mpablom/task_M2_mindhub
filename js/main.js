@@ -60,13 +60,6 @@ function filterItems(readProducts) {
     return filteredData;
 };
 
-//funcion actualYear de footer;
-
-function actualYear(){
-    const actualYear = new Date().getFullYear();
-    document.getElementById("year").innerHTML = actualYear;
-};
-
 //Crea la tarjeta;
 
 let cards = document.getElementById("cards");
@@ -101,6 +94,14 @@ function cardsCreate(filteredData){
         };
     };
 };
+
+//funcion actualYear de footer;
+
+function actualYear(){
+    const actualYear = new Date().getFullYear();
+    document.getElementById("year").innerHTML = actualYear;
+};
+
 
 //Guardo todo lo necesario en una función principal;
 
