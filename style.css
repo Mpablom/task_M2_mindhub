@@ -99,7 +99,7 @@ span{
 }
 .form-check-label{
     font-weight: 200;
-    font-size: 12px;
+    width: 100%;
     font-family: 'Nunito Sans', sans-serif;
     color: white;
 }
@@ -310,17 +310,21 @@ th,td,tr{
         width: 80% !important;
         margin-left: 10% !important;
     }
+    .filter-container{
+        display: block !important;
+    }
     .check-container{
         display:flex !important;
         flex-wrap: wrap !important;
-        justify-content: flex-start !important;
-        align-items: center !important;
+        align-items: flex-start;
+        width: 100% !important;
     }
     .form-check{
-        display: inline !important;
+        display: flex !important;
         max-width: 20%;
         margin: 0 !important;
         padding: 0 !important;
+        text-align: center;
     }
     .form-check-input{
         margin-left: 25% !important;
