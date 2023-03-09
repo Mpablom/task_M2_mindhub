@@ -1,18 +1,31 @@
+//Toma el id desde el link del evento al hacer click en seemore
+
 const url = new URL(window.location);
 const id = url.searchParams.get('id');
 console.log(id)
 const readEvent = data.events.find(event => event.id == id);
+
+//Agregamos el año actual al footer
 
 function actualYear(){
     const actualYear = new Date().getFullYear();
     document.getElementById("year").innerHTML = actualYear;
 };
 
-const getProduct = () =>{  
-    actualYear(); 
-    readEvent ;
-    createCardDetail(readEvent);
+//Pone la clase active al link de la navbar correspondiente
+
+const pastEvent = document.getElementById("pastEvent");
+const upcomingEvent = document.getElementById("upcomingEvent");
+const active = (readEvent) => {
+    console.log(readEvent)
+    if (readEvent.date < data.currentDate) {
+        pastEvent.classList.add('active');
+    }else{
+        upcomingEvent.classList.add('active');
+    }
 };
+
+//Crea la tarjeta de detalle y pone assistance o capacity de acuerdo a el tiempo en que ocurre el evento
 
 const createCardDetail = (readEvent) => {
     let card = document.getElementById("card");
@@ -40,5 +53,16 @@ const createCardDetail = (readEvent) => {
                             </div>
                         </div>`;
 };
+
+//Guardo todo en la función principal
+
+const getProduct = () =>{
+    active(readEvent);
+    actualYear(); 
+    readEvent ;
+    createCardDetail(readEvent);
+};
+
+//Llamo a la función principal
 
 getProduct();
