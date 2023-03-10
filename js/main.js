@@ -1,4 +1,9 @@
 //Toma los eventos de data;
+fetch('data.json')
+.then(response => response.json())
+.then(data=>{
+});
+console.log(data.currentDate);
 
 const readProducts = data.events;
 

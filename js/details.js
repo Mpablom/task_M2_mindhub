@@ -2,7 +2,6 @@
 
 const url = new URL(window.location);
 const id = url.searchParams.get('id');
-console.log(id)
 const readEvent = data.events.find(event => event.id == id);
 
 //Agregamos el año actual al footer
@@ -17,7 +16,6 @@ function actualYear(){
 const pastEvent = document.getElementById("pastEvent");
 const upcomingEvent = document.getElementById("upcomingEvent");
 const active = (readEvent) => {
-    console.log(readEvent)
     if (readEvent.date < data.currentDate) {
         pastEvent.classList.add('active');
     }else{
