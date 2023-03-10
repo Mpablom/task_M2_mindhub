@@ -10,7 +10,7 @@ html{
 body{
     min-height: 100vh;
     position: relative;
-    background: linear-gradient(to top,  rgb(27, 49, 43), rgb(42, 78, 68),rgb(130, 210, 189),rgb(180, 245, 227));
+    background: linear-gradient(to bottom, rgb(185, 0, 80),rgb(129, 0, 56));
 }
 
 /* ================================ HEADER =================================== */
@@ -49,9 +49,6 @@ body{
     text-align: center;
     text-transform: uppercase;
     color: white;
-}
-.fas{
-    color:white;
 }
 /* Keyframes */
 @keyframes wiggle {
@@ -102,12 +99,30 @@ span{
 }
 .form-check-label{
     font-weight: 200;
-    font-size: 12px;
+    width: 100%;
     font-family: 'Nunito Sans', sans-serif;
     color: white;
 }
+
+#no-results {
+    max-width: 60%;
+    margin-left: 20%;
+    display: flex;
+    font-weight: 900;
+    align-content: center;
+    justify-content: center;
+    padding: 50px;
+    font-size: 24px;
+    color: red;
+}
 .search{
     width: 100% !important;
+}
+.fas, .btn-primary{
+    transition: all .7s;
+}
+.btn-primary:hover .fas{
+    color:#0d6efd;
 }
 .btn-primary:hover{
     color:#0d6efd;
@@ -117,11 +132,14 @@ span{
             /* _______________________ CARDS _____________________________ */
 .card{
     box-shadow: 0px 0px 20px -10px black;
+    padding-bottom: 1.5%;
+    height: 100%;
 }
 .card-img-top{
     height: 150px;
     width: 85%;
-    box-shadow: -5px -5px 7px -4px black;
+    margin-left: 7.5%;
+    box-shadow: -5px -5px 7px -4px rgb(0, 0, 0);
     transition: all .4s ease-in-out;
 }
 .card-img-top:hover{
@@ -135,6 +153,7 @@ span{
     color: white;
     text-shadow: 0px 0px 4px #000000;
     font-family: 'Nunito Sans', sans-serif;
+    margin-bottom: 10%;
 }
 .card-text{
     text-align: center;
@@ -207,25 +226,50 @@ th,td,tr{
 
 .img-details, .description{
     border: 2px solid #333;
+    border-radius: 8px !important;
     width: 49% !important;
 }
 .img-fluid{
     width: 100%;
     min-height: 100%;
     box-shadow: -5px -5px 7px -2px black;
+    transition: all .4s ease-in-out;
+    border-radius: 8px;
+}
+.img-fluid:hover{
+    transform: scale(1.05);
 }
 .card-details{
-    margin-left: 12% !important;
+    width: 80%;
+    margin-left: 10%;
     border: 1px solid black;
+}
+.description>.card-footer, .card-header{
+    background-color: rgb(185, 0, 80);
+    color: whitesmoke;
+    border-radius: none;
+    box-shadow: -4px -4px 7px -4px black;
+    line-height: 1.5rem;
+}
+.card-header{
+    box-shadow: 2px 2px 10px -1px black;
+    display: flex;
+    justify-content: space-between;
+}
+.description>.card-header>p{
+    color: gray;
+}
+.description>.card-footer{
+    width:100%; 
+    margin-top:40%;
 }
 
 /* ================================ FOOTER =================================== */
 
 .footer{
-    color:rgb(208, 200, 200);
+    color:rgb(255, 255, 255);
     position:absolute;
     width: 100%;
-    font-family: 'Nunito Sans', sans-serif;
 }
 .name{
     font-size: 22px;
@@ -234,6 +278,8 @@ th,td,tr{
 }
 .text-name{
     text-transform: uppercase;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 200 !important;
 }
 .fab{
     transition: all .4s ease-in;
@@ -262,6 +308,20 @@ th,td,tr{
         margin-left: 20% !important;
         width: 60% !important;
     }
+    .card-img-top{
+        width: 90%;
+        margin-left: 5% !important;
+    }
+    .card-details{
+        display: inline-flex !important;
+        width: 80%;
+    }
+    .img-details{
+        width: 100% !important;
+    }
+    .description{
+        width: 100% !important;
+    }
 }
 @media (max-width:686px){
     .form{
@@ -271,17 +331,21 @@ th,td,tr{
         width: 80% !important;
         margin-left: 10% !important;
     }
+    .filter-container{
+        display: block !important;
+    }
     .check-container{
         display:flex !important;
         flex-wrap: wrap !important;
-        justify-content: flex-start !important;
-        align-items: center !important;
+        align-items: flex-start;
+        width: 100% !important;
     }
     .form-check{
-        display: inline !important;
+        display: flex !important;
         max-width: 20%;
         margin: 0 !important;
         padding: 0 !important;
+        text-align: center;
     }
     .form-check-input{
         margin-left: 25% !important;
@@ -298,6 +362,11 @@ th,td,tr{
         width: 94%;
         margin-left: 3%;
         margin-right: 3%;
+    }
+    .card-img-top{
+        height: auto;
+        width: 90%;
+        margin-left: 5%;
     }
 }
 @media(max-width: 320px){
@@ -322,13 +391,13 @@ th,td,tr{
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 10px 5px transparent;
     border-radius: 0px;
-    background: linear-gradient(to top, white,#333);
+    background: linear-gradient(to top, #333, rgb(134, 134, 134),#333);
 }
 
         /* _______________________ HANDLE __________________________ */
 
-        ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to top,  rgb(27, 49, 43), rgb(42, 78, 68),rgb(130, 210, 189),rgb(180, 245, 227));
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, rgb(255, 0, 111),rgb(0, 0, 0));
     border-radius: 8px;
     border: 4px solid transparent;
     background-clip: content-box;
@@ -336,7 +405,7 @@ th,td,tr{
         /* _______________________ HANDLE ON HOVER __________________ */
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(to top,rgb(180, 245, 227),rgb(130, 210, 189),rgb(42, 78, 68), rgb(27, 49, 43));
+    background: linear-gradient(to top, rgb(255, 0, 111),rgb(0, 0, 0));
     border-radius: 8px;
     border: 4px solid transparent;
     background-clip: content-box;
