@@ -1,3 +1,4 @@
+import { data,readProducts,cardsDates } from "./main.js";
 
 //Escucha el search, y busca las tarjetas de acuerdo al filtro;
 
@@ -64,3 +65,16 @@ function productsPast() {
 //Ejecuto la función;
 
 productsPast();
+
+// (async function productsPast(){
+//     try {
+//       await main();
+//       checkBoxesPast ();
+//         const pastData = filterPast(readProducts);
+//         cardsEventsPast(pastData, new Date(data.currentDate));
+//       console.log(readProducts);
+//       console.log(data);
+//     } catch(error) {
+//       console.log(error)
+//     }
+//   })();

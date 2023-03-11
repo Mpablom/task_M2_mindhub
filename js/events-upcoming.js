@@ -1,3 +1,5 @@
+import { data, readProducts, cardsDates} from './main.js';
+
 
 //Escucha el search, y busca las tarjetas de acuerdo al filtro;
 

@@ -1,24 +1,45 @@
-//Toma los eventos de data;
-fetch('data.json')
-.then(response => response.json())
-.then(data=>{
-});
-console.log(data.currentDate);
 
-const readProducts = data.events;
+//Toma los eventos de data;
+let urlApi = 'https://mindhub-xj03.onrender.com/api/amazing';
+let checks = document.getElementById("checks");
+let cards = document.getElementById("cards");
+
+async function dataApi() {
+  try {
+    const response = await fetch(urlApi);
+    const datos = await response.json();
+    return datos;
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+
+export const data = await dataApi();
+export const readProducts = data.events;
+
+
+function main(){
+    try {
+        actualYear();
+        checkBoxes();
+        cardsCreate(readProducts);
+    } catch(error) {
+        console.log(error)
+    }
+};
 
 //Escucha el search, y busca las tarjetas de acuerdo al filtro;
 
-const searchInput = document.getElementById('search');
-
-searchInput.addEventListener('input', function() {
+export const searchInput = document.getElementById('search');
+if(searchInput){
+  searchInput.addEventListener('input', function() {
     const filteredData = filterItems(readProducts);
     cardsCreate(filteredData);
-});
+  });
+}
 
 //Crea un checkbox por cada category de los events;
 
-let checks = document.getElementById("checks");
 const categories = [...new Set(readProducts.map(events => events.category))];
 
 function addCheckBoxes(categories) {
@@ -67,8 +88,8 @@ function filterItems(readProducts) {
 
 //Crea la tarjeta;
 
-let cards = document.getElementById("cards");
-function cardsDates(valor){
+// let cards = document.getElementById("cards");
+export function cardsDates(valor){
         cards.innerHTML += `<div class="col-sm-5 col-md-4 col-lg-4 col-xl-3">
                                 <div class="card">
                                     <img src="${valor.image}" class="card-img-top m-4" alt="${valor.name}">
@@ -78,7 +99,7 @@ function cardsDates(valor){
                                     </div>
                                     <div class="card-footer d-inline-flex border-top-0">
                                         <p> Price:<span class="pe-2">${valor.price}.-</span></p>
-                                        <a href="./details.html?id=${valor.id}" class="btn btn-dark w-75 seeMore">See More</a>
+                                        <a href="./details.html?id=${valor._id}" class="btn btn-dark w-75 seeMore">See More</a>
                                     </div>  
                                 </div>
                             </div>`;
@@ -107,15 +128,5 @@ function actualYear(){
     document.getElementById("year").innerHTML = actualYear;
 };
 
-
-//Guardo todo lo necesario en una función principal;
-
-function main(){
-    actualYear();
-    checkBoxes ();
-    cardsCreate(readProducts);
-};
-
 //Ejecuto la función;
-
 main();

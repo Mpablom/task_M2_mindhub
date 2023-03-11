@@ -1,8 +1,22 @@
-//Toma el id desde el link del evento al hacer click en seemore
 
+import { data,readProducts } from "./main.js";
+
+//Toma el id desde el link del evento al hacer click en seemore
 const url = new URL(window.location);
 const id = url.searchParams.get('id');
-const readEvent = data.events.find(event => event.id == id);
+const readEvent = readProducts.find(event => event._id == id);
+
+function getProduct(){
+    try{
+        active(readEvent);
+        actualYear();
+        createCardDetail(readEvent);
+    }
+    catch(error){
+        console.log(error);
+    }
+};
+
 
 //Agregamos el año actual al footer
 
@@ -50,15 +64,6 @@ const createCardDetail = (readEvent) => {
                                 </div>
                             </div>
                         </div>`;
-};
-
-//Guardo todo en la función principal
-
-const getProduct = () =>{
-    active(readEvent);
-    actualYear(); 
-    readEvent ;
-    createCardDetail(readEvent);
 };
 
 //Llamo a la función principal
