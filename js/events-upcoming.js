@@ -1,13 +1,15 @@
-import { data, readProducts, cardsDates} from './main.js';
+import { readProducts,data,cardsDates,noResults } from './main.js';
 
 
 //Escucha el search, y busca las tarjetas de acuerdo al filtro;
 
-const searchInDos = document.getElementById('search');
-searchInDos.addEventListener('input', function() {
-    const filteredDataDos = filterUpcoming(readProducts);
-    cardsEventsUpcoming(filteredDataDos, new Date(data.currentDate));
-});
+const searchInDos = document.getElementById('searchU');
+if(searchInDos){
+    searchInDos.addEventListener('input', function() {
+        const filteredDataDos = filterUpcoming(readProducts);
+        cardsEventsUpcoming(filteredDataDos, new Date(data.currentDate));
+    });
+}
 
 // Detectar cambios en los checkboxes y llama las funciones filterUpcoming() y cardsEventsUpcoming();
 
@@ -52,6 +54,9 @@ function filterUpcoming(readProducts) {
         const isUpcoming = new Date(event.date) >= isEvent;
         return containsCategory && containsKeyword && isUpcoming;
     });
+    if(filteredData == 0){
+        noResults.innerHTML = "No se Encontró el evento!!";
+    }
     return filteredData;
 };
 

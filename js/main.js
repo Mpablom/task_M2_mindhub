@@ -106,13 +106,12 @@ export function cardsDates(valor){
 };
 
 //Crea tarjeta por cada elemento en filterdata, si este se encuentra vacío deja mensaje de error;
-
+export const noResults = document.getElementById("no-results");
 function cardsCreate(filteredData){
     let cards = document.getElementById("cards");
     cards.innerHTML = "";
-    let noResults = document.getElementById("no-results");
     noResults.innerHTML = "";
-    if (filteredData.length === 0) {
+    if (filteredData.length == 0) {
         noResults.innerHTML="No se Encontró el evento!!";
     } else {
         for(let valor of filteredData){

@@ -1,13 +1,16 @@
-import { data,readProducts,cardsDates } from "./main.js";
+import { readProducts,data,cardsDates,noResults } from "./main.js";
 
 //Escucha el search, y busca las tarjetas de acuerdo al filtro;
 
-const searchIn = document.getElementById('search');
-searchIn.addEventListener('input', function() {
-    const filteredData = filterPast(readProducts);
-    cardsEventsPast(filteredData, new Date(data.currentDate));
-});
+const searchInputIn = document.getElementById("searchP");
 
+if(searchInputIn){
+    searchInputIn.addEventListener('input', function() {
+        const filteredData = filterPast(readProducts);
+        cardsEventsPast(filteredData, new Date(data.currentDate));
+    });
+    
+}
 // Detectar cambios en los checkboxes y llama las funciones filterPast() y cardsEventsPast();
 
 const checkboxes = document.querySelectorAll('input[type=checkbox]');
@@ -35,7 +38,7 @@ function cardsEventsPast(readProducts, currentDate) {
         let eventDate = new Date(event.date);
         if (eventDate < currentDate) {
             cardsDates(event);
-        };
+        }
     };
 };
 
@@ -43,7 +46,7 @@ function cardsEventsPast(readProducts, currentDate) {
 
 function filterPast(readProducts) {
     const selectedCategories = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
-    const keyword = searchIn.value.toLowerCase();
+    const keyword = searchInputIn.value.toLowerCase();
     const isEvent = new Date(data.currentDate);
     const filteredData = readProducts.filter(event => {
         const containsCategory = selectedCategories.length === 0 || selectedCategories.includes(event.category);
@@ -51,6 +54,9 @@ function filterPast(readProducts) {
         const isPast = new Date(event.date) < isEvent;
         return containsCategory && containsKeyword && isPast;
     });
+    if(filteredData == 0){
+        noResults.innerHTML = "No se Encontró el evento!!";
+    }
     return filteredData;
 };
 
@@ -59,22 +65,9 @@ function filterPast(readProducts) {
 function productsPast() {
     checkBoxesPast ();
     const pastData = filterPast(readProducts);
-    cardsEventsPast(pastData, new Date(data.currentDate));
+    cardsEventsPast(pastData, new Date( data.currentDate));
 };
 
 //Ejecuto la función;
 
 productsPast();
-
-// (async function productsPast(){
-//     try {
-//       await main();
-//       checkBoxesPast ();
-//         const pastData = filterPast(readProducts);
-//         cardsEventsPast(pastData, new Date(data.currentDate));
-//       console.log(readProducts);
-//       console.log(data);
-//     } catch(error) {
-//       console.log(error)
-//     }
-//   })();
