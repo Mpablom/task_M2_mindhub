@@ -56,6 +56,8 @@ function filterPast(readProducts) {
     });
     if(filteredData == 0){
         noResults.innerHTML = "No se Encontró el evento!!";
+    }else{
+        noResults.innerHTML = '';
     }
     return filteredData;
 };

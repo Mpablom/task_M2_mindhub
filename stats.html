@@ -57,10 +57,10 @@
     </header>
     <main>
 
-         <!-- ****************************************************** CONTACT FORM ************************************************** -->
+         <!-- ****************************************************** STATS ************************************************** -->
 
         <div class="table-container">
-            <table class="table mt-5 ms-0 mb-0">
+            <table class="table mt-5 ms-0 mb-0" id="table">
                 <thead>
                     <tr>
                         <th class="th-text" scope="col" colspan="3">Events Statistics</th>
@@ -72,14 +72,10 @@
                         <td>Events with the lowest percentage of attendance</td>
                         <td>Event with larger capacity</td>
                     </tr>
-                    <tr>
-                        <th scope="row">-</th>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
+                    
                 </tbody>
             </table>
-            <table class="table ms-0 mb-0">
+            <table class="table ms-0 mb-0" id="table-upcoming">
                 <thead>
                     <tr>
                         <th class="th-text" scope="col" colspan="3">Upcoming events statistics by category</th>
@@ -91,24 +87,10 @@
                         <td>Revenues</td>
                         <td>Percentage of attendance</td>
                     </tr>
-                    <tr>
-                        <th scope="row">-</th>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">-</th>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">-</th>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
+                    
                 </tbody>
             </table>
-            <table class="table ms-0 mb-0">
+            <table class="table ms-0 mb-0" id="table-past">
                 <thead>
                     <tr>
                         <th class="th-text" scope="col" colspan="3">Past events statistics by category</th>
@@ -120,31 +102,7 @@
                         <td>Revenues</td>
                         <td>Percentage of attendance</td>
                     </tr>
-                    <tr>
-                        <th scope="row">-</th>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">-</th>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">-</th>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">-</th>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">-</th>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div> 
@@ -158,11 +116,11 @@
                 <i class="fab fa-whatsapp fa-2x"></i>
             </div>
             <div class="name d-inline-flex me-4">
-                <p class="text-name">fe04-tn</p>
+                <p class="text-name">fe04-tn | <span id="year"></span></p>
             </div>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/stats.js" type="module"></script>
 </body>
 </html>
