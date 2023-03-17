@@ -216,10 +216,17 @@ th,td,tr{
     border: 1px solid black !important;
     font-weight: 200;
     font-style: italic !important;
+    padding: 7px 0px !important;
 }
 .th-text{
     text-align: center;
-    font-weight: 700 !important;
+    font-weight: bolder !important;
+    background:linear-gradient(to top,#2f3235, #212529,#2f3235);
+    color: #e7f1ff;
+}
+.subtitle{
+    font-weight: 600;
+    font-style: italic;
 }
 
 /* ================================ DETAILS =================================== */

@@ -83,6 +83,11 @@ function filterItems(readProducts) {
         const containsKeyword = keyword === '' || events.name.toLowerCase().includes(keyword) || events.description.toLowerCase().includes(keyword);
         return containsCategory && containsKeyword;
     });
+    if(filteredData == 0){
+        noResults.innerHTML = "No se Encontró el evento!!";
+    }else{
+        noResults.innerHTML = '';
+    }
     return filteredData;
 };
 
