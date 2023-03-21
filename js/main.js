@@ -46,7 +46,7 @@ function addCheckBoxes(categories) {
     for (let item of categories) {
         checks.innerHTML += ` <div class="form-check d-inline-flex mt-3 ms-3">
                                     <input class="form-check-input m-0 " type="checkbox" value="${item}" id="input-${item}" name="category">
-                                    <label class="form-check-label ps-2 pe-4 sm-ps-0 sm-pe-0" for="input${item}">
+                                    <label class="form-check-label ps-2 pe-4 sm-ps-0 sm-pe-0" for="input-${item}">
                                         ${item}
                                     </label>
                                 </div>`;
